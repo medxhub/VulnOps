@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>Vulnerabilities Dashboard</h1>
+    <p><a href="{{ url_for('import_qualys_data') }}">Import Vulnerabilities from Qualys</a></p>
     <p><a href="{{ url_for('add_vulnerability') }}">Add Vulnerability</a></p>
     <ul>
         {% for vuln in vulnerabilities %}

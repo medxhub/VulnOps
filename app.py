@@ -1,13 +1,20 @@
+import os
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from forms import LoginForm, VulnerabilityForm
 from models import db, User, Vulnerability
+from flask import flash, redirect, url_for
+from qualys_api import QualysAPI
+
+
+qualys_username = os.getenv('QUALYS_USERNAME')
+qualys_password = os.getenv('QUALYS_PASSWORD')
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vulntrack.db'
-app.config['SECRET_KEY'] = 'yoursecretkey'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vulnops.db'
+app.config['SECRET_KEY'] = 'change_this_secret_key'
 
 db.init_app(app)
 migrate = Migrate(app, db)
@@ -63,6 +70,23 @@ def add_vulnerability():
         flash('Vulnerability added successfully!', 'success')
         return redirect(url_for('dashboard'))
     return render_template('add_vulnerability.html', form=form)
+
+@app.route('/import_qualys')
+@login_required
+def import_qualys_data():
+    # You should store the credentials securely, ideally in environment variables
+    qualys_username = 'your_qualys_username'
+    qualys_password = 'your_qualys_password'
+
+    # Instantiate the Qualys API client
+    qualys_api = QualysAPI(qualys_username, qualys_password)
+
+    # Fetch and import vulnerabilities
+    data = qualys_api.get_vulnerabilities()
+    qualys_api.import_vulnerabilities(data)
+
+    flash('Vulnerabilities imported from Qualys API.', 'success')
+    return redirect(url_for('dashboard'))
 
 if __name__ == '__main__':
     app.run(host="10.0.2.6",debug=True)
