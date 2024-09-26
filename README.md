@@ -1,6 +1,6 @@
-# VulnTrack - Vulnerability Operations Center
+# VulnOps - Vulnerability Operations Center
 
-**VulnTrack** is a web-based application designed to help security teams and analysts track, manage, and monitor vulnerabilities across an organization’s infrastructure. The app provides a dashboard for overseeing open vulnerabilities, adding new ones, and generating reports on their status and severity.
+**VulnOps** is a web-based application designed to help security teams and analysts track, manage, and monitor vulnerabilities across an organization’s infrastructure. The app provides a dashboard for overseeing open vulnerabilities, adding new ones, and generating reports on their status and severity.
 
 ## Table of Contents
 
@@ -51,5 +51,5 @@
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/vulntrack.git
-   cd vulntrack
+   git clone https://github.com/yourusername/VulnOps.git
+   cd VulnOps
