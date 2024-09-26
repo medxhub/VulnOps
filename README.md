@@ -16,6 +16,7 @@
 
 - **User Authentication**: Role-based login system for Admins and Analysts.
 - **Vulnerability Management**: Add and manage vulnerabilities, with fields for CVE ID, severity, and description.
+- **Vulnerability import from Qualys**
 - **Dashboard**: View open vulnerabilities with filtering based on severity and status.
 - **User Management**: Role-based access control with separate views for admins and analysts.
 - **Real-Time Data**: Keep track of open vulnerabilities and monitor them in real time.
