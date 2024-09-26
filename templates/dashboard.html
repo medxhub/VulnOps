@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - VulnOps</title>
+</head>
+<body>
+    <h1>Vulnerabilities Dashboard</h1>
+    <p><a href="{{ url_for('add_vulnerability') }}">Add Vulnerability</a></p>
+    <ul>
+        {% for vuln in vulnerabilities %}
+        <li>{{ vuln.cve_id }} - {{ vuln.severity }} - {{ vuln.description }} ({{ vuln.status }})</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>
+
